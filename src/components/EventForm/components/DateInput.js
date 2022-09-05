@@ -1,7 +1,7 @@
 import { Platform, Text, TouchableOpacity } from "react-native"
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState } from "react";
-import AddEventStyle from "../style/AddEventStyle";
+import EventFormStyle from "../style/EventFormStyle";
 
 export const DateInput = ({ label = '', mode = 'date', onChangeDate }) => {
     const [showDateTimePicker, setShowDateTimePicker] = useState(false);
@@ -39,6 +39,6 @@ export const DateInput = ({ label = '', mode = 'date', onChangeDate }) => {
     )
 }
 
-const styles = AddEventStyle;
+const styles = EventFormStyle;
 
 export default DateInput;

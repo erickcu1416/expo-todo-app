@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, SafeAreaView } from "react-native";
 import FloatButton from '../../components/FloatButton/FloatButton';
-import EventImageInput from '../AddEvent/components/EventImageInput';
 
 const HomeScreen = () => {
     const [isHidden, setIsHidden] = useState(false);
@@ -21,7 +20,6 @@ const HomeScreen = () => {
                         <Text style={{ color: '#3478F6' }}>{isHidden ? "Show Completed" : "Hide Completed"}</Text>
                     </TouchableOpacity>
                 </View>
-                <EventImageInput/>
             </ScrollView>
             <FloatButton onClick={onClickFloatButtonHandler} />
         </SafeAreaView>

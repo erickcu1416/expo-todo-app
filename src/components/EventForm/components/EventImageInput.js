@@ -1,12 +1,12 @@
 import { useCallback, useState } from "react";
 import { Image, Text, View } from "react-native";
-import AddEventStyle from "../style/AddEventStyle";
 import AddImageButton from "./AddImageButton";
 // import DocumentPicker from "react-native-document-picker";
 import * as DocumentPicker from 'expo-document-picker';
 import Separator from "../../../components/Separator/Separator";
 import { isValidImageDimensionsPromise } from "../../../utils/ImageValidator";
 import { DEFAULT_STATIC } from "../../../constants/static";
+import EventFormStyle from "../style/EventFormStyle";
 
 const EventImageInput = ({ text = 'Desktop image', validWidth = 2340, validHeight = 700 }) => {
 
@@ -53,6 +53,6 @@ const EventImageInput = ({ text = 'Desktop image', validWidth = 2340, validHeigh
     )
 }
 
-const styles = AddEventStyle;
+const styles = EventFormStyle;
 
 export default EventImageInput;
