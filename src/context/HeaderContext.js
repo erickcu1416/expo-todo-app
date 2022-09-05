@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-const HeaderContext = createContext({ name: "Loader" });
+const HeaderContext = createContext({ name: "Header" });
 
 export const HeaderContextProvider = ({
     children,

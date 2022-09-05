@@ -2,10 +2,11 @@ import { Platform, Text, TouchableOpacity } from "react-native"
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState } from "react";
 import EventFormStyle from "../style/EventFormStyle";
+import { isAfterToday } from "../../../utils/ImageValidator";
 
-export const DateInput = ({ label = '', mode = 'date', onChangeDate }) => {
+export const DateInput = ({ label = '', mode = 'date', onChangeDate, defaultDate = new Date(), editable = true  }) => {
     const [showDateTimePicker, setShowDateTimePicker] = useState(false);
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState(defaultDate !== null ? defaultDate : new Date());
 
     const onChangeDateHandler = (selectedDate) => {
         setDate(selectedDate);
@@ -24,7 +25,7 @@ export const DateInput = ({ label = '', mode = 'date', onChangeDate }) => {
 
         if (Platform.OS === 'ios') return DateComponent;
 
-        if (Platform.OS !== 'ios' && showDateTimePicker) return DateComponent;
+        if (Platform.OS !== 'ios' && showDateTimePicker && editable) return DateComponent;
 
         return <TouchableOpacity onPress={() => setShowDateTimePicker(true)}>
             <Text style={{ color: 'gray' }}>{date === null ? 'Seleccionar fecha' : mode === 'time' ? date.toTimeString() : date.toDateString()}</Text>

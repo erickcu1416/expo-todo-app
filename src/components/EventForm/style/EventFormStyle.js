@@ -37,7 +37,6 @@ const EventFormStyle = StyleSheet.create({
         marginBottom: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#000000',
         height: 46,
         borderRadius: 11,
     }

@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeScreen from '../screens/Home/HomeScreen'
 import useHeader from '../hooks/useHeader'
 import AddEventScreen from '../screens/AddEvent/AddEventScreen'
+import { ViewEventScreen } from '../screens/ViewEvent/ViewEventScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -26,6 +27,16 @@ export const GuestAppNavigator = () => {
         options={{
           presentation: 'modal',
           headerTitle: 'Event',
+          headerShown: true,
+        }}
+      />
+
+      <Stack.Screen
+        name="ViewEvent"
+        component={ViewEventScreen}
+        options={{
+          presentation: 'modal',
+          headerTitle: 'View event',
           headerShown: true,
         }}
       />

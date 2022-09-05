@@ -1,14 +1,33 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, SafeAreaView } from "react-native";
 import FloatButton from '../../components/FloatButton/FloatButton';
+import LineSeparator from '../../components/LineSeparator/LineSeparator';
+import Separator from '../../components/Separator/Separator';
+import { useEventContext } from '../../context/EventContext';
+import useEvent from '../../hooks/useEvent';
+import { EventItem } from './components/EventItem';
 
 const HomeScreen = () => {
     const [isHidden, setIsHidden] = useState(false);
     const navigation = useNavigation();
-    
+
+    const { events } = useEventContext();
+
+    useEffect(() => {
+        console.log('Events in HOME', events);
+    }, [events])
+
+
     const onClickFloatButtonHandler = () => {
         navigation.navigate('Add');
+    }
+
+    const onClickItemHandler = (event) => {
+        console.log('ON CLICK EVENT', event);
+        navigation.navigate('ViewEvent', {
+            event
+        });
     }
 
     return (
@@ -16,10 +35,14 @@ const HomeScreen = () => {
             <ScrollView style={styles.container}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Text style={styles.title}>Events</Text>
-                    <TouchableOpacity>
-                        <Text style={{ color: '#3478F6' }}>{isHidden ? "Show Completed" : "Hide Completed"}</Text>
-                    </TouchableOpacity>
                 </View>
+                
+                {
+                    events.map((event, i) => (
+                        <EventItem onClickItem={onClickItemHandler} event={event} key={event.id} />
+                    ))
+                }
+
             </ScrollView>
             <FloatButton onClick={onClickFloatButtonHandler} />
         </SafeAreaView>
